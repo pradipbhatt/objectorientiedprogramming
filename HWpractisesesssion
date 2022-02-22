@@ -1,41 +1,43 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-class time
+
+class BCTE // BCTE named class is created
 {
-    int hour, minutes;
+    int code;
+    static int count; // Count is static type data of integer form
 
 public:
-    void get_time(int h, int m) // function declerartion/prototype
+    void setcode() // setcode function is defined
     {
-        hour = h;
-        minutes = m;
+        count++;
+        code = count;
     }
 
-    void display()
+    void showcode() // showcode function is defined
     {
-        cout << hour << "hour and ";
-        cout << minutes << "minutes." << endl;
+        cout << "Student code \t " << code << "/BCTE/077." << endl;
     }
-void time sum(time t1, time t2)
+
+    static void showcount()
+    {
+        cout << "Records of " << count << "Student fund." << endl;
+    }
+};
+int BCTE::count;
+
+int main()
 {
-    minutes = t1.minutes + t2.minutes;
-    hours = minutes / 60;
-    minutes = hours % 60;
-    hours = hours + t1.hours + t2.hours;
-}
-
-    
-}
-
-
-int main(int argc, char const *argv[])
-{
-    time T1, T2, T3;
+    BCTE c1, c2, c3; // C1 and C2 objects are created of class BCTE
     system("cls");
-    T1.get_time(8, 50);
-    T2.get_time(4, 40);
-    T3.sum(T1, T2);
-    T3.display();
-    return 0;
+    c1.setcode(); // c1.called the function setcode.
+    c2.setcode(); // c2.called the function setcode.
+
+    BCTE::showcount(); // static function showcount is called.
+    c3.setcode();
+     BCTE::showcount(); // static function showcount is called.
+
+    c1.showcode(); // object c1 call showcode function.
+    c2.showcode(); // object c2 call showcode function.
+    c3.showcode(); // object c3 call showcode function.
 }
